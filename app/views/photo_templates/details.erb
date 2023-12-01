@@ -25,7 +25,7 @@
   <dd>
     <form action="/update_photo/<%= @photo.id %>" method="post">
       <label for="browser_image">Image</label>
-      <input type="text" id="browser_imgage" name="input_image" placeholder="Enter a URL for the image..." value=<%= @photo.image %>>
+      <input type="text" id="browser_image" name="input_image" placeholder="Enter a URL for the image..." value=<%= @photo.image %>>
       <label for="browser_caption">Caption</label>
       <textarea id= "browser_caption" name="input_caption" placeholder="Enter a caption for the photo...">
         <%= @photo.caption %>

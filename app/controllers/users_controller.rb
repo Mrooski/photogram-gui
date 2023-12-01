@@ -16,7 +16,23 @@ class UsersController < ApplicationController
     new_user.username = params.fetch("input_username")
     new_user.save
 
-    redirect_to("/users")
+    if new_user.username.empty?
+      redirect_to("/users")
+    else
+      redirect_to("/users/"+new_user.username)
+    end
+  end
+
+  def update
+    new_username = params.fetch("input_browser_username")
+    user_id_to_update = params.fetch("id")
+    user_to_update = User.where({:id => user_id_to_update}).at(0)
+    user_to_update.username = new_username
+    if user_to_update.save == true
+      redirect_to("/users/" + user_to_update.username)
+    else
+      redirect_to("/users/" + User.where({:id => user_id_to_update}).at(0).username)
+    end
   end
 
 end
